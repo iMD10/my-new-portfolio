@@ -173,7 +173,7 @@ export function SkillsSection() {
     <section id="skills" className="bg-[#F5EFE4] dark:bg-ink py-24 md:py-32 overflow-hidden transition-colors duration-300">
       <div className="px-5 md:px-10">
         <FadeIn>
-          <h2 className="text-[16vw] md:text-[10vw] leading-none tracking-[-0.02em] font-extrabold text-[#1C1610] dark:text-sand">
+          <h2 className="text-[16vw] md:text-[10vw] leading-none font-extrabold text-[#1C1610] dark:text-sand">
             {t.skills.heading}
           </h2>
           <p className="mt-5 text-[#7A6A58] dark:text-muted text-base md:text-lg max-w-xl">{t.skills.intro}</p>
@@ -187,7 +187,7 @@ export function SkillsSection() {
           return (
             <FadeIn key={group.title} delay={gi * 0.1}>
               <div className="flex flex-col gap-3">
-                <p className={`px-5 md:px-10 text-xs uppercase tracking-[0.3em] font-bold ${meta.color}`}>
+                <p className={`px-5 md:px-10 text-xs uppercase font-bold ${meta.color}`}>
                   {group.title}
                 </p>
                 <MarqueeRow
@@ -211,7 +211,7 @@ export function AboutSection() {
     <section id="about" className="bg-[#EBE1D0] dark:bg-dark py-24 md:py-32 px-5 transition-colors duration-300">
       <div className="max-w-3xl mx-auto text-center">
         <FadeIn>
-          <p className="text-xs uppercase tracking-[0.35em] text-gold">{t.about.heading}</p>
+          <p className="text-xs uppercase text-gold">{t.about.heading}</p>
           <p className="mt-6 text-xl md:text-3xl leading-relaxed md:leading-relaxed font-bold text-[#1C1610] dark:text-sand">
             {t.about.text}
           </p>

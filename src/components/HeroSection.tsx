@@ -98,7 +98,7 @@ export default function HeroSection() {
             <h1
               className={`font-extrabold text-sand max-w-full ${
                 lang === 'ar'
-                  ? 'tracking-normal leading-[1.05] text-[15vw] sm:text-[13vw] md:text-[10.5vw] lg:text-[8vw]'
+                  ? 'leading-[1.05] text-[15vw] sm:text-[13vw] md:text-[10.5vw] lg:text-[8vw]'
                   : 'tracking-[-0.07em] leading-[0.82] text-[17vw] sm:text-[14.5vw] md:text-[11.5vw] lg:text-[8.6vw]'
               }`}
             >
@@ -108,7 +108,7 @@ export default function HeroSection() {
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.25, duration: 0.7, ease: [0.25, 0.1, 0.25, 1] }}
-              className="text-xs sm:text-sm md:text-base uppercase tracking-[0.35em] text-gold mt-4"
+              className="text-xs sm:text-sm md:text-base uppercase text-gold mt-4"
             >
               {t.hero.subtitle}
             </motion.p>

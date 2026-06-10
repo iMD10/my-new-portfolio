@@ -99,7 +99,7 @@ function renderProjectMedia({
           <span className="h-2.5 w-2.5 rounded-full bg-[#FF5F57]" />
           <span className="h-2.5 w-2.5 rounded-full bg-[#FEBC2E]" />
           <span className="h-2.5 w-2.5 rounded-full bg-[#28C840]" />
-          {desktopLabel && <span className="ms-2 truncate text-[10px] uppercase tracking-[0.18em] text-[#1C1610]/42 dark:text-sand/42">{desktopLabel}</span>}
+          {desktopLabel && <span className="ms-2 truncate text-[10px] uppercase text-[#1C1610]/42 dark:text-sand/42">{desktopLabel}</span>}
         </div>
         <div
           className={`min-h-0 overflow-hidden rounded-b-[18px] border border-black/10 bg-white shadow-[0_18px_42px_rgba(0,0,0,0.12)] dark:border-white/10 dark:bg-[#111] ${large ? 'aspect-[16/10] md:flex-1 md:aspect-auto' : 'flex-1'}`}
@@ -328,7 +328,7 @@ function StickyProjectCard({
             </span>
             <div className="min-w-0">
               <h3 className="text-3xl md:text-5xl font-extrabold text-[#1C1610] dark:text-sand leading-tight">{item.name}</h3>
-              <p className="mt-2 text-xs md:text-sm uppercase tracking-[0.25em] text-gold">{item.category}</p>
+              <p className="mt-2 text-xs md:text-sm uppercase text-gold">{item.category}</p>
             </div>
           </div>
           <div className="flex flex-wrap gap-2.5 lg:justify-self-start xl:justify-self-end">
@@ -408,7 +408,7 @@ function StickyProjectCard({
                     key={metric.label}
                     className="flex min-h-[11rem] flex-col justify-start rounded-[26px] border border-black/10 bg-white/46 p-6 shadow-[0_18px_42px_rgba(0,0,0,0.08)] dark:border-white/10 dark:bg-white/[0.05]"
                   >
-                    <p className="text-xs uppercase tracking-[0.24em] text-gold">{metric.label}</p>
+                    <p className="text-xs uppercase text-gold">{metric.label}</p>
                     <p className="mt-5 text-4xl md:text-5xl font-extrabold leading-none text-[#1C1610] dark:text-sand">{metric.value}</p>
                   </div>
                 ))}
@@ -478,7 +478,7 @@ export default function ProjectsSection() {
         className="bg-[#F5EFE4] dark:bg-ink rounded-t-[40px] md:rounded-t-[60px] -mt-10 relative z-10 py-24 md:py-32 px-4 md:px-10 transition-colors duration-300"
       >
         <FadeIn>
-          <h2 className="text-[16vw] md:text-[10vw] leading-none tracking-[-0.02em] font-extrabold text-[#1C1610] dark:text-sand">
+          <h2 className="text-[16vw] md:text-[10vw] leading-none font-extrabold text-[#1C1610] dark:text-sand">
             {t.projects.heading}
           </h2>
         </FadeIn>
@@ -537,7 +537,7 @@ export default function ProjectsSection() {
               </button>
 
               <div className="max-w-3xl">
-                <p className="text-xs uppercase tracking-[0.28em] text-gold">{selectedProject.category}</p>
+                <p className="text-xs uppercase text-gold">{selectedProject.category}</p>
                 <h3 className="mt-3 text-3xl md:text-5xl font-extrabold leading-tight">{selectedProject.name}</h3>
                 <p className="mt-4 text-sm md:text-base leading-7 text-[#1C1610]/72 dark:text-sand/76">
                   {selectedProject.details.overview}
@@ -566,7 +566,7 @@ export default function ProjectsSection() {
                   </p>
                   {!showGallery && (
                     <div className="mt-5 rounded-[24px] border border-black/10 bg-white/38 p-5 dark:border-white/10 dark:bg-white/[0.04]">
-                      <p className="text-xs uppercase tracking-[0.22em] text-gold">
+                      <p className="text-xs uppercase text-gold">
                         {lang === 'ar' ? 'نوع المشروع' : 'Project Type'}
                       </p>
                       <p className="mt-3 text-base leading-7 text-[#1C1610]/72 dark:text-sand/72">
@@ -585,7 +585,7 @@ export default function ProjectsSection() {
                   </div>
                 </div>
                 <div className="lg:col-span-5">
-                  <h4 className="text-sm font-bold uppercase tracking-[0.2em] text-gold">
+                  <h4 className="text-sm font-bold uppercase text-gold">
                     {lang === 'ar' ? 'أبرز النقاط' : 'Highlights'}
                   </h4>
                   {!showGallery && (selectedProject.details.metrics?.length ?? 0) > 0 ? (
@@ -596,7 +596,7 @@ export default function ProjectsSection() {
                             key={metric.label}
                             className="rounded-[22px] border border-black/10 bg-white/44 px-5 py-5 dark:border-white/10 dark:bg-white/[0.05]"
                           >
-                            <p className="text-[11px] uppercase tracking-[0.24em] text-gold">{metric.label}</p>
+                            <p className="text-[11px] uppercase text-gold">{metric.label}</p>
                             <p className="mt-3 text-3xl md:text-4xl font-extrabold">{metric.value}</p>
                           </div>
                         ))}

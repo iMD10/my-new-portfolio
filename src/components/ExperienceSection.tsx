@@ -54,7 +54,7 @@ export default function ExperienceSection() {
   return (
     <section id="experience" className="bg-[#EBE1D0] dark:bg-dark py-24 md:py-32 px-5 md:px-10 overflow-hidden transition-colors duration-300">
       <FadeIn>
-        <h2 className="text-[16vw] md:text-[10vw] leading-none tracking-[-0.02em] font-extrabold text-[#1C1610] dark:text-sand">
+        <h2 className="text-[16vw] md:text-[10vw] leading-none font-extrabold text-[#1C1610] dark:text-sand">
           {t.experience.heading}
         </h2>
         <p className="mt-5 text-[#7A6A58] dark:text-muted text-base md:text-lg max-w-xl">{t.experience.intro}</p>

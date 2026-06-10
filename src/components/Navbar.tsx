@@ -33,7 +33,7 @@ export default function Navbar() {
             <a
               key={l.href}
               href={l.href}
-              className="text-[10px] sm:text-[11px] md:text-xs uppercase tracking-wider text-[#1C1610]/70 dark:text-sand/80 hover:text-[#1C1610] dark:hover:text-sand whitespace-nowrap transition-all duration-200"
+              className="text-[10px] sm:text-[11px] md:text-xs uppercase text-[#1C1610]/70 dark:text-sand/80 hover:text-[#1C1610] dark:hover:text-sand whitespace-nowrap transition-all duration-200"
             >
               {l.label}
             </a>
@@ -118,7 +118,7 @@ export default function Navbar() {
                 initial={{ opacity: 0, x: -8 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: i * 0.04, duration: 0.18 }}
-                className="px-4 py-2.5 rounded-xl text-xs uppercase tracking-wider font-medium text-[#1C1610]/75 dark:text-sand/80 hover:bg-black/5 dark:hover:bg-white/10 hover:text-[#1C1610] dark:hover:text-sand transition-colors duration-150"
+                className="px-4 py-2.5 rounded-xl text-xs uppercase font-medium text-[#1C1610]/75 dark:text-sand/80 hover:bg-black/5 dark:hover:bg-white/10 hover:text-[#1C1610] dark:hover:text-sand transition-colors duration-150"
               >
                 {l.label}
               </motion.a>

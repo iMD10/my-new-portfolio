@@ -85,7 +85,7 @@ export default function IntroLoader({ children }: { children: ReactNode }) {
                 initial={{ opacity: 0, y: 12 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.15, duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
-                className="text-[10px] sm:text-xs uppercase tracking-[0.45em] text-gold mb-5"
+                className="text-[10px] sm:text-xs uppercase text-gold mb-5"
               >
                 {t.hero.subtitle}
               </motion.p>
