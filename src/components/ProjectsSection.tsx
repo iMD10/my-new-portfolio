@@ -13,6 +13,7 @@ type ProjectItem = {
     overview: string
     highlights: string[]
     metrics?: { label: string; value: string }[]
+    previewMetrics?: { label: string; value: string }[]
     imageCount?: number
     images?: string[]
     imageLayout?: ('logo' | 'desktop' | 'mobile')[]
@@ -303,7 +304,7 @@ function StickyProjectCard({
   const previewImages = item.details.images?.slice(0, 3) ?? []
   const previewKinds = item.details.imageLayout?.slice(0, 3) ?? []
   const showPreview = (item.details.imageCount ?? previewImages.length) > 0 && previewImages.length > 0
-  const metrics = item.details.metrics ?? []
+  const metrics = item.details.previewMetrics ?? item.details.metrics ?? []
   const [activePreview, setActivePreview] = useState(0)
   const cardMinHeight = 'min-h-[78vh]'
 
@@ -400,14 +401,14 @@ function StickyProjectCard({
                 }}
               />
               <div className="noise-local" />
-              <div className="absolute inset-0 grid gap-4 p-5 md:grid-cols-3">
+              <div className={`absolute inset-0 grid gap-4 p-5 ${metrics.length === 2 ? 'md:grid-cols-2' : 'md:grid-cols-3'}`}>
                 {metrics.map((metric) => (
                   <div
                     key={metric.label}
-                    className="flex min-h-[11rem] flex-col justify-between rounded-[26px] border border-black/10 bg-white/46 p-6 shadow-[0_18px_42px_rgba(0,0,0,0.08)] dark:border-white/10 dark:bg-white/[0.05]"
+                    className="flex min-h-[11rem] flex-col justify-start rounded-[26px] border border-black/10 bg-white/46 p-6 shadow-[0_18px_42px_rgba(0,0,0,0.08)] dark:border-white/10 dark:bg-white/[0.05]"
                   >
                     <p className="text-xs uppercase tracking-[0.24em] text-gold">{metric.label}</p>
-                    <p className="text-4xl md:text-5xl font-extrabold text-[#1C1610] dark:text-sand">{metric.value}</p>
+                    <p className="mt-5 text-4xl md:text-5xl font-extrabold leading-none text-[#1C1610] dark:text-sand">{metric.value}</p>
                   </div>
                 ))}
               </div>

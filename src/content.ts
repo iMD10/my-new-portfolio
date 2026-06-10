@@ -4,6 +4,7 @@ type ProjectDetails = {
   overview: string
   highlights: string[]
   metrics?: { label: string; value: string }[]
+  previewMetrics?: { label: string; value: string }[]
   imageCount?: number
   images?: string[]
   imageLayout?: ('logo' | 'desktop' | 'mobile')[]
@@ -25,7 +26,7 @@ export const content = {
       headline: 'أشتغل على منتجات ذكية، بأسلوب هادئ وعملي.',
       description:
         'خريج علوم حاسب، الأول على دفعتي. اشتغلت على مشاريع في الذكاء الاصطناعي والبيانات وتطبيقات الجوال ومنصات الويب وذكاء الأعمال.',
-      pills: ['معدل 4.96 من 5', 'الأول على الدفعة', 'برنامج كاوست للذكاء الاصطناعي', 'نواة متوفر على iOS و Android'],
+      pills: ['معدل 4.96 من 5', 'الأول على الدفعة', 'برنامج كاوست للذكاء الاصطناعي'],
       ctaProjects: 'شاهد المشاريع',
       ctaCV: 'السيرة الذاتية',
     },
@@ -148,6 +149,10 @@ metrics: [
 { label: 'Accuracy', value: '80.6%' },
 { label: 'Training', value: '30 Epochs' },
 ],
+previewMetrics: [
+{ label: 'Dataset', value: 'CIFAR-10' },
+{ label: 'Training', value: '30 Epochs' },
+],
 imageCount: 0,
 } satisfies ProjectDetails,
 buttons: [
@@ -216,7 +221,7 @@ buttons: [
       headline: 'Building intelligent products with a calm, practical mindset.',
       description:
         'Computer Science graduate ranked 1st in class, with hands-on work across AI, data, mobile apps, web platforms, and business intelligence.',
-      pills: ['4.96 / 5 GPA', '1st in CS Class', 'KAUST AI Program', 'Nawah live on iOS & Android'],
+      pills: ['4.96 / 5 GPA', '1st in CS Class', 'KAUST AI Program'],
       ctaProjects: 'View Projects',
       ctaCV: 'View CV',
     },
@@ -339,6 +344,10 @@ buttons: [
               { label: 'Test Accuracy', value: '80.6%' },
               { label: 'Training', value: '30 Epochs' },
             ],
+            previewMetrics: [
+              { label: 'Dataset', value: 'CIFAR-10' },
+              { label: 'Training', value: '30 Epochs' },
+            ],
             imageCount: 0,
           } satisfies ProjectDetails,
           buttons: [
@@ -394,8 +403,8 @@ buttons: [
 }
 
 export const links = {
-  email: 'mailto:muhannad@example.com',
+  email: 'mailto:mohanad.alfawzan1@gmail.com',
   linkedin: 'https://www.linkedin.com/in/muhannad-alfawzan',
-  github: 'https://github.com/muhannad-alfawzan',
-  cv: '#',
+  github: 'https://github.com/iMD10',
+  cv: '/Muhannad-Alfawzan-CV.pdf',
 }
