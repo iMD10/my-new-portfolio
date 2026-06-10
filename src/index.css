@@ -21,6 +21,62 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Lenis smooth scroll */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+/* Hide the native viewport scrollbar — the custom indicator replaces it.
+   Also prevents the layout shift when scroll locks (intro, modals) toggle. */
+html {
+  scrollbar-width: none;
+}
+
+html::-webkit-scrollbar {
+  display: none;
+}
+
+/* Custom scroll indicator */
+.scroll-indicator {
+  position: fixed;
+  top: 18px;
+  bottom: 18px;
+  inset-inline-end: 7px;
+  width: 4px;
+  z-index: 110;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.45s ease;
+}
+
+.scroll-indicator.is-visible {
+  opacity: 1;
+}
+
+.scroll-indicator-thumb {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  border-radius: 999px;
+  background: linear-gradient(180deg, rgba(232, 172, 98, 0.95), rgba(166, 110, 44, 0.9));
+  box-shadow: 0 0 12px rgba(217, 154, 78, 0.45);
+  will-change: transform;
+}
+
 html,
 body,
 #root {

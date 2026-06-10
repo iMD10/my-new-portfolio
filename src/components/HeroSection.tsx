@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from 'react'
+import { useState } from 'react'
 import type { CSSProperties } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { ChevronUp } from 'lucide-react'
@@ -37,40 +37,12 @@ export default function HeroSection() {
   const { t, lang } = useLang()
   const { isDark } = useTheme()
   const [expanded, setExpanded] = useState(false)
-  const imgRef = useRef<HTMLImageElement>(null)
-  const sectionRef = useRef<HTMLElement>(null)
-
-  useEffect(() => {
-    const section = sectionRef.current
-    const img = imgRef.current
-    if (!section || !img) return
-
-    const onMove = (e: MouseEvent) => {
-      const { left, top, width, height } = section.getBoundingClientRect()
-      const x = ((e.clientX - left) / width - 0.5) * 2
-      const y = ((e.clientY - top) / height - 0.5) * 2
-      img.style.animation = 'none'
-      img.style.transform = `scale(1.06) translate(${x * -12}px, ${y * -8}px)`
-    }
-
-    const onLeave = () => {
-      img.style.transform = 'scale(1.06) translate(0px, 0px)'
-    }
-
-    section.addEventListener('mousemove', onMove)
-    section.addEventListener('mouseleave', onLeave)
-    return () => {
-      section.removeEventListener('mousemove', onMove)
-      section.removeEventListener('mouseleave', onLeave)
-    }
-  }, [])
 
   return (
-    <section ref={sectionRef} className="h-[100svh] p-3 md:p-4">
+    <section className="h-[100svh] p-3 md:p-4">
       <div className="h-full rounded-2xl md:rounded-[2rem] overflow-hidden relative">
         {/* Background image — CSS entrance + JS parallax */}
         <img
-          ref={imgRef}
           key={isDark ? 'hero-dark' : 'hero-light'}
           className="absolute inset-0 w-full h-full object-cover object-[38%_center] hero-img-enter"
           style={{ transform: 'scale(1.06)', transition: 'transform 0.12s ease-out' }}

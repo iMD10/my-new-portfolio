@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 import { AnimatePresence, motion, useScroll, useTransform } from 'framer-motion'
 import { useLang } from '../LangContext'
 import { FadeIn, PillButton } from './shared'
+import { getLenis } from './SmoothScroll'
 import { ArrowLeft, ArrowRight, ArrowUpRight, X } from 'lucide-react'
 
 type ProjectItem = {
@@ -443,10 +444,12 @@ export default function ProjectsSection() {
     }
 
     document.body.style.overflow = 'hidden'
+    getLenis()?.stop()
     window.addEventListener('keydown', onKeyDown)
 
     return () => {
       document.body.style.overflow = ''
+      getLenis()?.start()
       window.removeEventListener('keydown', onKeyDown)
     }
   }, [selectedProject])
@@ -510,6 +513,7 @@ export default function ProjectsSection() {
               exit={{ opacity: 0, y: 20, scale: 0.98 }}
               transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
               onClick={(event) => event.stopPropagation()}
+              data-lenis-prevent
               className="project-modal-scroll relative w-full max-w-6xl max-h-[92vh] overflow-y-auto overflow-x-hidden rounded-[32px] border border-black/10 bg-[#F5EFE4] p-5 md:p-8 text-[#1C1610] shadow-[0_30px_80px_rgba(0,0,0,0.35)] dark:border-white/10 dark:bg-[#0D0B09] dark:text-sand"
               dir={lang === 'ar' ? 'rtl' : 'ltr'}
             >

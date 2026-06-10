@@ -11,6 +11,20 @@
       href="https://fonts.googleapis.com/css2?family=Almarai:wght@300;400;700;800&family=Instrument+Serif:ital@1&display=swap"
       rel="stylesheet"
     />
+    <script>
+      // Kick off the hero image download before the app bundle loads
+      (function () {
+        var theme = localStorage.getItem('theme')
+        if (theme !== 'light' && theme !== 'dark') {
+          theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+        }
+        var link = document.createElement('link')
+        link.rel = 'preload'
+        link.as = 'image'
+        link.href = theme === 'dark' ? './hero-dark.jpg' : './hero-light.jpg'
+        document.head.appendChild(link)
+      })()
+    </script>
   </head>
   <body>
     <div id="root"></div>
