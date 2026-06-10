@@ -478,7 +478,7 @@ export default function ProjectsSection() {
         className="bg-[#F5EFE4] dark:bg-ink rounded-t-[40px] md:rounded-t-[60px] -mt-10 relative z-10 py-24 md:py-32 px-4 md:px-10 transition-colors duration-300"
       >
         <FadeIn>
-          <h2 className="text-[16vw] md:text-[10vw] leading-none font-extrabold text-[#1C1610] dark:text-sand">
+          <h2 className="text-[10vw] md:text-[6vw] leading-none font-extrabold text-[#1C1610] dark:text-sand">
             {t.projects.heading}
           </h2>
         </FadeIn>

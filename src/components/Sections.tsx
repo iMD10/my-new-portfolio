@@ -173,7 +173,7 @@ export function SkillsSection() {
     <section id="skills" className="bg-[#F5EFE4] dark:bg-ink py-24 md:py-32 overflow-hidden transition-colors duration-300">
       <div className="px-5 md:px-10">
         <FadeIn>
-          <h2 className="text-[16vw] md:text-[10vw] leading-none font-extrabold text-[#1C1610] dark:text-sand">
+          <h2 className="text-[10vw] md:text-[6vw] leading-none font-extrabold text-[#1C1610] dark:text-sand">
             {t.skills.heading}
           </h2>
           <p className="mt-5 text-[#7A6A58] dark:text-muted text-base md:text-lg max-w-xl">{t.skills.intro}</p>
