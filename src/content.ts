@@ -37,9 +37,9 @@ export const content = {
         {
           company: 'إجادة للنظم',
           role: 'متدرب ذكاء أعمال',
-          date: 'صيف 2025',
+          date: '06/2025 - 08/2025',
           desc: 'بنيت لوحات Power BI على بيانات AdventureWorks باستخدام Power Query و DAX ومؤشرات الأداء.',
-          image: '/bi-dashboard-1.jpg',
+          image: '/ejada.jpg',
         },
         {
           company: 'أكاديمية كاوست',
@@ -58,7 +58,7 @@ export const content = {
         {
           company: 'ورشة Git و GitHub',
           role: 'مقدم ورشة',
-          date: '2025',
+          date: '30/9/2025',
           desc: 'قدمت ورشة عملية عن Git و GitHub لطلاب جامعة القصيم.',
           image: '/github-image.jpg',
         },
@@ -232,9 +232,9 @@ buttons: [
         {
           company: 'Ejada Systems',
           role: 'Business Intelligence Intern',
-          date: 'Summer 2025',
+          date: '06/2025 - 08/2025',
           desc: 'Built Power BI dashboards using AdventureWorks data, applying Power Query, DAX, KPIs, and dashboard design.',
-          image: '/bi-dashboard-1.jpg',
+          image: '/ejada.jpg',
         },
         {
           company: 'KAUST Academy',
@@ -253,7 +253,7 @@ buttons: [
         {
           company: 'Git & GitHub Workshop',
           role: 'Workshop Instructor',
-          date: '2025',
+          date: '30/9/2025',
           desc: 'Delivered a practical Git and GitHub workshop for students at Qassim University.',
           image: '/github-image.jpg',
         },
