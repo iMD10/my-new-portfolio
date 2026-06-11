@@ -514,9 +514,20 @@ export default function ProjectsSection() {
               transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
               onClick={(event) => event.stopPropagation()}
               data-lenis-prevent
-              className="project-modal-scroll relative w-full max-w-6xl max-h-[92vh] overflow-y-auto overflow-x-hidden rounded-[32px] border border-black/10 bg-[#F5EFE4] p-5 md:p-8 text-[#1C1610] shadow-[0_30px_80px_rgba(0,0,0,0.35)] dark:border-white/10 dark:bg-[#0D0B09] dark:text-sand"
+              className="project-modal-scroll relative flex max-h-[calc(100dvh-1.5rem)] w-full max-w-6xl flex-col overflow-hidden rounded-[28px] border border-black/10 bg-[#F5EFE4] text-[#1C1610] shadow-[0_30px_80px_rgba(0,0,0,0.35)] dark:border-white/10 dark:bg-[#0D0B09] dark:text-sand md:max-h-[92vh] md:rounded-[32px]"
               dir={lang === 'ar' ? 'rtl' : 'ltr'}
             >
+              <div className="sticky top-0 z-20 flex justify-end border-b border-black/10 bg-[#F5EFE4]/92 px-4 py-4 backdrop-blur md:px-8 dark:border-white/10 dark:bg-[#0D0B09]/92">
+                <button
+                  type="button"
+                  onClick={() => setSelectedProject(null)}
+                  aria-label={lang === 'ar' ? 'Ø¥ØºÙ„Ø§Ù‚' : 'Close'}
+                  className="flex h-10 w-10 items-center justify-center rounded-full border border-black/10 bg-black/5 text-[#1C1610] transition-colors hover:bg-black/10 dark:border-white/10 dark:bg-white/5 dark:text-sand dark:hover:bg-white/10"
+                >
+                  <X className="h-4 w-4" />
+                </button>
+              </div>
+              <div className="flex-1 overflow-y-auto overflow-x-hidden overscroll-contain px-5 pb-5 pt-5 md:px-8 md:pb-8 md:pt-6">
               {(() => {
                 const galleryCount = selectedProject.details.imageCount ?? 3
                 const showGallery = galleryCount > 0
@@ -527,15 +538,6 @@ export default function ProjectsSection() {
 
                 return (
                   <>
-              <button
-                type="button"
-                onClick={() => setSelectedProject(null)}
-                aria-label={lang === 'ar' ? 'إغلاق' : 'Close'}
-                className="absolute end-4 top-4 flex h-10 w-10 items-center justify-center rounded-full border border-black/10 bg-black/5 text-[#1C1610] transition-colors hover:bg-black/10 dark:border-white/10 dark:bg-white/5 dark:text-sand dark:hover:bg-white/10"
-              >
-                <X className="h-4 w-4" />
-              </button>
-
               <div className="max-w-3xl">
                 <p className="text-xs uppercase text-gold">{selectedProject.category}</p>
                 <h3 className="mt-3 text-3xl md:text-5xl font-extrabold leading-tight">{selectedProject.name}</h3>
@@ -616,6 +618,7 @@ export default function ProjectsSection() {
                   </>
                 )
               })()}
+              </div>
             </motion.div>
           </motion.div>
         )}
