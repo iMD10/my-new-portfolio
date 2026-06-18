@@ -8,6 +8,7 @@ import { SkillsSection, AboutSection, ContactSection } from './components/Sectio
 import CursorSpotlight from './components/CursorSpotlight'
 import IntroLoader from './components/IntroLoader'
 import SmoothScroll from './components/SmoothScroll'
+import BackToTop from './components/BackToTop'
 
 export default function App() {
   return (
@@ -25,6 +26,7 @@ export default function App() {
             <AboutSection />
             <ContactSection />
           </main>
+          <BackToTop />
         </IntroLoader>
       </LangProvider>
     </ThemeProvider>

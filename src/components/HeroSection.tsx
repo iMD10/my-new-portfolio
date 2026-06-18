@@ -1,7 +1,7 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import type { CSSProperties } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { ChevronUp } from 'lucide-react'
+import { ChevronUp, ChevronDown } from 'lucide-react'
 import { useLang } from '../LangContext'
 import { useTheme } from '../ThemeContext'
 import { WordsPullUp, GlassPanel, PillButton } from './shared'
@@ -37,6 +37,13 @@ export default function HeroSection() {
   const { t, lang } = useLang()
   const { isDark } = useTheme()
   const [expanded, setExpanded] = useState(false)
+  const [scrolled, setScrolled] = useState(false)
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 40)
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [])
 
   return (
     <section className="h-[100svh] p-3 md:p-4">
@@ -89,6 +96,25 @@ export default function HeroSection() {
             />
           ))}
         </div>
+
+        {/* Scroll-down cue — sits in the open image area, fades out once scrolling starts */}
+        <motion.a
+          href="#experience"
+          aria-label={lang === 'ar' ? 'انزل للأسفل' : 'Scroll down'}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: scrolled ? 0 : 1 }}
+          transition={{ duration: 0.4 }}
+          className={`absolute left-1/2 top-[58%] z-[5] hidden -translate-x-1/2 -translate-y-1/2 flex-col items-center gap-1.5 text-sand/85 drop-shadow-[0_2px_8px_rgba(0,0,0,0.5)] sm:flex ${scrolled ? 'pointer-events-none' : ''}`}
+        >
+          <span className="text-[10px] uppercase tracking-[0.25em]">{lang === 'ar' ? 'اسحب للأسفل' : 'Scroll'}</span>
+          <motion.span
+            animate={{ y: [0, 8, 0] }}
+            transition={{ duration: 1.6, repeat: Infinity, ease: 'easeInOut' }}
+            className="flex h-9 w-9 items-center justify-center rounded-full border border-white/30 bg-black/25 backdrop-blur-sm"
+          >
+            <ChevronDown className="h-5 w-5" />
+          </motion.span>
+        </motion.a>
 
         {/* Bottom content */}
         <div className="absolute bottom-5 md:bottom-8 left-4 md:left-8 right-4 md:right-8 grid grid-cols-1 lg:grid-cols-12 gap-5 md:gap-6 items-end">

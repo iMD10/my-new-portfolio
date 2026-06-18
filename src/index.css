@@ -49,32 +49,47 @@ html::-webkit-scrollbar {
   display: none;
 }
 
-/* Custom scroll indicator */
+/* Custom scroll indicator — interactive (drag thumb / click track to scroll) */
 .scroll-indicator {
   position: fixed;
   top: 18px;
   bottom: 18px;
-  inset-inline-end: 7px;
-  width: 4px;
+  inset-inline-end: 4px;
+  width: 14px;
   z-index: 110;
-  pointer-events: none;
   opacity: 0;
+  cursor: pointer;
   transition: opacity 0.45s ease;
 }
 
-.scroll-indicator.is-visible {
+.scroll-indicator.is-visible,
+.scroll-indicator:hover,
+.scroll-indicator.is-dragging {
   opacity: 1;
 }
 
 .scroll-indicator-thumb {
   position: absolute;
   top: 0;
-  left: 0;
-  right: 0;
+  left: 50%;
+  width: 5px;
+  margin-left: -2.5px;
   border-radius: 999px;
   background: linear-gradient(180deg, rgba(232, 172, 98, 0.95), rgba(166, 110, 44, 0.9));
   box-shadow: 0 0 12px rgba(217, 154, 78, 0.45);
+  cursor: grab;
+  transition: width 0.15s ease;
   will-change: transform;
+}
+
+.scroll-indicator:hover .scroll-indicator-thumb,
+.scroll-indicator.is-dragging .scroll-indicator-thumb {
+  width: 7px;
+  margin-left: -3.5px;
+}
+
+.scroll-indicator.is-dragging .scroll-indicator-thumb {
+  cursor: grabbing;
 }
 
 html,
