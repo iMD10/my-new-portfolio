@@ -240,6 +240,96 @@ function ShowcaseNav({
   )
 }
 
+// A single phone frame whose screen scrolls horizontally — swipe / arrows / dots
+// move between the screenshots inside one device.
+function SwipeablePhone({
+  images,
+  onOpenImage,
+}: {
+  images: string[]
+  onOpenImage: (src: string, kind: 'logo' | 'desktop' | 'mobile' | undefined) => void
+}) {
+  const scrollRef = useRef<HTMLDivElement>(null)
+  const [active, setActive] = useState(0)
+
+  const handleScroll = () => {
+    const el = scrollRef.current
+    if (!el) return
+    setActive(Math.round(el.scrollLeft / el.clientWidth))
+  }
+
+  const goTo = (index: number) => {
+    const el = scrollRef.current
+    if (!el) return
+    const clamped = Math.min(images.length - 1, Math.max(0, index))
+    el.scrollTo({ left: clamped * el.clientWidth, behavior: 'smooth' })
+  }
+
+  return (
+    <div className="flex h-full w-full flex-col items-center justify-center gap-4 p-4 md:p-6">
+      <div className="relative h-[min(62vh,40rem)] w-[min(19rem,72vw)] max-w-full overflow-hidden rounded-[2rem] border border-black/12 bg-[#111] shadow-[0_22px_60px_rgba(0,0,0,0.28)] dark:border-white/10">
+        <div className="absolute left-1/2 top-2 z-20 h-5 w-24 -translate-x-1/2 rounded-full bg-black/75" />
+        <div className="absolute inset-[6px] overflow-hidden rounded-[1.6rem] bg-white">
+          <div
+            ref={scrollRef}
+            dir="ltr"
+            onScroll={handleScroll}
+            className="flex h-full w-full snap-x snap-mandatory overflow-x-auto overflow-y-hidden [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+          >
+            {images.map((src) => (
+              <button
+                key={src}
+                type="button"
+                onClick={() => onOpenImage(src, 'mobile')}
+                className="h-full w-full shrink-0 snap-center cursor-zoom-in"
+              >
+                <img src={src} alt="" className="h-full w-full bg-white object-cover object-top" />
+              </button>
+            ))}
+          </div>
+        </div>
+
+        {images.length > 1 && (
+          <>
+            <button
+              type="button"
+              onClick={() => goTo(active - 1)}
+              disabled={active === 0}
+              aria-label="Previous screenshot"
+              className="absolute left-2 top-1/2 z-20 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full border border-white/15 bg-black/45 text-white backdrop-blur transition-opacity disabled:pointer-events-none disabled:opacity-0"
+            >
+              <ArrowLeft className="h-4 w-4" />
+            </button>
+            <button
+              type="button"
+              onClick={() => goTo(active + 1)}
+              disabled={active === images.length - 1}
+              aria-label="Next screenshot"
+              className="absolute right-2 top-1/2 z-20 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full border border-white/15 bg-black/45 text-white backdrop-blur transition-opacity disabled:pointer-events-none disabled:opacity-0"
+            >
+              <ArrowRight className="h-4 w-4" />
+            </button>
+          </>
+        )}
+      </div>
+
+      {images.length > 1 && (
+        <div className="flex items-center gap-2">
+          {images.map((_, dotIndex) => (
+            <button
+              key={dotIndex}
+              type="button"
+              onClick={() => goTo(dotIndex)}
+              aria-label={`Go to screenshot ${dotIndex + 1}`}
+              className={`h-1.5 rounded-full transition-all ${dotIndex === active ? 'w-7 bg-[#D99A4E]' : 'w-1.5 bg-black/20 dark:bg-white/30'}`}
+            />
+          ))}
+        </div>
+      )}
+    </div>
+  )
+}
+
 function renderProjectShowcase({
   images,
   kinds,
@@ -281,22 +371,25 @@ function renderProjectShowcase({
 
   if (showcaseKind === 'logo-two-mobiles' && images.length >= 3) {
     return (
-      <>
-        {mobileModalCarousel}
-        <div className={`${shouldUseMobileModalCarousel ? 'hidden md:grid' : 'grid'} gap-3 md:grid-cols-[0.5fr_1.5fr] md:items-stretch`}>
-          <div className={`${shell} min-h-[140px] md:min-h-[220px] flex items-center justify-center p-5 md:p-7`}>
-            {renderProjectMedia({ src: images[0], kind: kinds[0], desktopLabel: title, onClick: () => onOpenImage(images[0], kinds[0]) })}
-          </div>
-          <div className="grid grid-cols-2 gap-3">
-            <div className={`${shell} min-h-[340px] md:min-h-[600px] flex items-center justify-center`}>
-              {renderProjectMedia({ src: images[1], kind: kinds[1], large: true, desktopLabel: title, onClick: () => onOpenImage(images[1], kinds[1]) })}
-            </div>
-            <div className={`${shell} min-h-[340px] md:min-h-[600px] flex items-center justify-center`}>
-              {renderProjectMedia({ src: images[2], kind: kinds[2], large: true, desktopLabel: title, onClick: () => onOpenImage(images[2], kinds[2]) })}
-            </div>
-          </div>
+      <div className="grid gap-3 md:grid-cols-[0.55fr_1.45fr] md:items-stretch">
+        <div className={`${shell} flex items-center justify-center p-6 md:p-8 min-h-[200px] md:min-h-0`}>
+          <button
+            type="button"
+            onClick={() => onOpenImage(images[0], kinds[0])}
+            aria-label={title}
+            className="cursor-zoom-in transition-transform duration-200 hover:scale-[1.03]"
+          >
+            <img
+              src={images[0]}
+              alt=""
+              className="h-28 w-28 rounded-[28px] bg-white object-cover shadow-[0_18px_42px_rgba(0,0,0,0.18)] md:h-40 md:w-40"
+            />
+          </button>
         </div>
-      </>
+        <div className={`${shell} min-h-[440px] md:min-h-[600px] flex items-center justify-center`}>
+          <SwipeablePhone images={images.slice(1)} onOpenImage={onOpenImage} />
+        </div>
+      </div>
     )
   }
 
