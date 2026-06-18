@@ -427,9 +427,9 @@ function StickyProjectCard({
               ))}
             </div>
           </div>
-          <div className="hidden lg:flex lg:col-span-7 xl:col-span-8 lg:items-end lg:justify-end">
+          <div className="hidden lg:flex lg:col-span-7 xl:col-span-8 lg:items-center lg:justify-end">
             {showPreview ? (
-            <div className="relative w-full aspect-[4/3] xl:aspect-[16/11] rounded-[28px] overflow-hidden bg-[rgba(210,195,175,0.7)] dark:bg-[rgba(15,13,10,0.72)] border border-black/10 dark:border-white/10">
+            <div className="relative w-full max-w-[600px] xl:max-w-[700px] aspect-[4/3] xl:aspect-[16/11] rounded-[28px] overflow-hidden bg-[rgba(210,195,175,0.7)] dark:bg-[rgba(15,13,10,0.72)] border border-black/10 dark:border-white/10">
               <div
                 className="absolute inset-0"
                 style={{
