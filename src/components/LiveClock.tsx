@@ -37,7 +37,7 @@ export default function LiveClock() {
       <span className="font-mono tabular-nums text-[10px] md:text-[11px] leading-none">
         {hh}:{mm}
       </span>
-      <span className="text-[9px] md:text-[10px] font-medium opacity-60 leading-none self-center">
+      <span className="inline-block min-w-[1.3rem] text-center text-[9px] md:text-[10px] font-medium opacity-60 leading-none self-center">
         {ampm}
       </span>
     </div>

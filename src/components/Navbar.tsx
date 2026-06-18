@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useLang } from '../LangContext'
+import { content } from '../content'
 import { useTheme } from '../ThemeContext'
 import { Sun, Moon, Menu, X } from 'lucide-react'
 import LiveClock from './LiveClock'
@@ -19,25 +20,45 @@ export default function Navbar() {
   ]
 
   return (
-    <div className="fixed top-6 left-1/2 -translate-x-1/2 z-50 flex flex-col items-center max-w-[94vw]">
+    <div
+      dir="ltr"
+      className="fixed top-6 left-1/2 -translate-x-1/2 z-50 flex flex-col items-center max-w-[94vw]"
+    >
       {/* ── Main pill ── */}
       <motion.nav
+        dir="ltr"
         initial={{ y: -20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.7, ease: [0.25, 0.1, 0.25, 1] }}
         className="rounded-full backdrop-blur-xl bg-white/70 dark:bg-black/35 border border-black/10 dark:border-white/15 shadow-2xl px-3 md:px-5 py-2 md:py-2.5 flex items-center gap-2 md:gap-5"
       >
-        {/* Desktop links */}
-        <div className="hidden md:flex items-center gap-2.5 md:gap-5 overflow-y-visible py-0.5">
-          {navLinks.map((l) => (
-            <a
-              key={l.href}
-              href={l.href}
-              className="text-[10px] sm:text-[11px] md:text-xs uppercase text-[#1C1610]/70 dark:text-sand/80 hover:text-[#1C1610] dark:hover:text-sand whitespace-nowrap transition-all duration-200"
-            >
-              {l.label}
-            </a>
-          ))}
+        {/* Desktop links — width is locked to the English labels (the wider set) via an
+            invisible sizer, so the centered pill doesn't shift when switching language. */}
+        <div className="hidden md:grid overflow-y-visible py-0.5">
+          <div
+            aria-hidden
+            className="col-start-1 row-start-1 invisible flex items-center gap-2.5 md:gap-5"
+          >
+            {Object.values(content.en.nav).map((label) => (
+              <span
+                key={label}
+                className="text-[10px] sm:text-[11px] md:text-xs uppercase whitespace-nowrap"
+              >
+                {label}
+              </span>
+            ))}
+          </div>
+          <div className="col-start-1 row-start-1 flex items-center justify-center gap-2.5 md:gap-5">
+            {navLinks.map((l) => (
+              <a
+                key={l.href}
+                href={l.href}
+                className="text-[10px] sm:text-[11px] md:text-xs uppercase text-[#1C1610]/70 dark:text-sand/80 hover:text-[#1C1610] dark:hover:text-sand whitespace-nowrap transition-all duration-200"
+              >
+                {l.label}
+              </a>
+            ))}
+          </div>
         </div>
 
         <LiveClock />

@@ -125,6 +125,69 @@ function renderProjectMedia({
   )
 }
 
+// Card-preview media: sizes the mockup to fit inside the fixed preview window
+// (no fixed rem/vh heights, image contained) so previews are never cropped.
+function renderProjectCardMedia({
+  src,
+  kind,
+  desktopLabel,
+  onClick,
+}: {
+  src: string
+  kind: 'logo' | 'desktop' | 'mobile' | undefined
+  desktopLabel?: string
+  onClick?: () => void
+}) {
+  if (kind === 'mobile') {
+    return (
+      <button
+        type="button"
+        onClick={onClick}
+        className="flex h-full w-full cursor-zoom-in items-center justify-center p-1"
+      >
+        <div className="relative aspect-[13/18] h-full max-h-full max-w-full overflow-hidden rounded-[1.8rem] border border-black/12 bg-[#111] shadow-[0_18px_46px_rgba(0,0,0,0.26)] dark:border-white/10">
+          <div className="absolute left-1/2 top-2 z-10 h-4 w-20 -translate-x-1/2 rounded-full bg-black/75" />
+          <div className="absolute inset-[5px] overflow-hidden rounded-[1.5rem] bg-white">
+            <img src={src} alt="" className="h-full w-full object-cover object-top bg-white" />
+          </div>
+        </div>
+      </button>
+    )
+  }
+
+  if (kind === 'desktop') {
+    return (
+      <button
+        type="button"
+        onClick={onClick}
+        className="flex h-full w-full cursor-zoom-in items-center justify-center"
+      >
+        <div className="flex h-full w-full flex-col overflow-hidden rounded-[16px] border border-black/10 bg-white shadow-[0_18px_42px_rgba(0,0,0,0.14)] dark:border-white/10 dark:bg-[#111]">
+          <div className="flex items-center gap-1.5 border-b border-black/10 bg-white/72 px-3 py-2 dark:border-white/10 dark:bg-white/8">
+            <span className="h-2.5 w-2.5 rounded-full bg-[#FF5F57]" />
+            <span className="h-2.5 w-2.5 rounded-full bg-[#FEBC2E]" />
+            <span className="h-2.5 w-2.5 rounded-full bg-[#28C840]" />
+            {desktopLabel && <span className="ms-2 truncate text-[10px] uppercase text-[#1C1610]/42 dark:text-sand/42">{desktopLabel}</span>}
+          </div>
+          <div className="min-h-0 flex-1 bg-white dark:bg-[#111]">
+            <img src={src} alt="" className="h-full w-full object-contain object-top bg-white" />
+          </div>
+        </div>
+      </button>
+    )
+  }
+
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      className="flex h-full w-full cursor-zoom-in items-center justify-center p-3"
+    >
+      <img src={src} alt="" className="max-h-full max-w-full object-contain" />
+    </button>
+  )
+}
+
 function getShowcaseKind(kinds: ('logo' | 'desktop' | 'mobile' | undefined)[]) {
   const filtered = kinds.filter(Boolean)
   if (filtered.length === 3 && filtered[0] === 'logo' && filtered[1] === 'mobile' && filtered[2] === 'mobile') return 'logo-two-mobiles'
@@ -377,17 +440,24 @@ function StickyProjectCard({
                 }}
               />
               <div className="noise-local" />
-              <div className="absolute inset-0 p-5">
-                {renderProjectShowcase({
-                  images: previewImages,
-                  kinds: previewKinds,
-                  title: item.name,
-                  activeIndex: previewIndex,
-                  onPrev: () => setActivePreview((value) => (value - 1 + previewImages.length) % previewImages.length),
-                  onNext: () => setActivePreview((value) => (value + 1) % previewImages.length),
-                  mode: 'card',
-                  onOpenImage,
-                })}
+              <div className="absolute inset-0 flex flex-col p-4 md:p-5">
+                <div className="relative min-h-0 flex-1">
+                  {renderProjectCardMedia({
+                    src: previewImages[previewIndex],
+                    kind: previewKinds[previewIndex],
+                    desktopLabel: item.name,
+                    onClick: () => onOpenImage(previewImages[previewIndex], previewKinds[previewIndex]),
+                  })}
+                </div>
+                {previewImages.length > 1 && (
+                  <ShowcaseNav
+                    count={previewImages.length}
+                    active={previewIndex}
+                    onPrev={() => setActivePreview((value) => (value - 1 + previewImages.length) % previewImages.length)}
+                    onNext={() => setActivePreview((value) => (value + 1) % previewImages.length)}
+                    compact
+                  />
+                )}
               </div>
             </div>
             ) : (
