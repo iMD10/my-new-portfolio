@@ -132,36 +132,6 @@ export const content = {
             { label: 'التفاصيل', href: '#' },
           ],
         },
-       {
-name: 'CNN Image Classification',
-category: 'AI / Deep Learning',
-desc: 'CNN project for CIFAR-10 image classification, with Feature Maps visualization and model evaluation.',
-tech: ['Python', 'TensorFlow', 'Keras'],
-details: {
-overview: 'مشروع أكاديمي لبناء وتقييم CNN model لتصنيف الصور، مع فهم أوضح لسلوك الطبقات الداخلية.',
-highlights: [
-'تدريب CNN model على CIFAR-10 dataset.',
-'عرض Feature Maps لفهم ما يتعلمه النموذج داخل الطبقات.',
-'تحليل النتائج وتقييم أداء النموذج بشكل منظم.',
-],
-metrics: [
-{ label: 'Dataset', value: 'CIFAR-10' },
-{ label: 'Accuracy', value: '80.6%' },
-{ label: 'Training', value: '30 Epochs' },
-],
-previewMetrics: [
-{ label: 'Dataset', value: 'CIFAR-10' },
-{ label: 'Training', value: '30 Epochs' },
-],
-imageCount: 0,
-} satisfies ProjectDetails,
-buttons: [
-{ label: 'Kaggle', href: 'https://www.kaggle.com/code/mohanadalfawzan/cnn-cifar10' },
-{ label: 'GitHub', href: 'https://github.com/iMD10/cnn-image-classification' },
-{ label: 'Details', href: '#' },
-],
-},
-
         {
           name: 'لوحة ذكاء الأعمال',
           category: 'بيانات / ذكاء أعمال',
@@ -324,35 +294,6 @@ buttons: [
           } satisfies ProjectDetails,
           buttons: [
             { label: 'Website', href: 'https://mdgames.store' },
-            { label: 'Details', href: '#' },
-          ],
-        },
-        {
-          name: 'CNN Image Classification',
-          category: 'AI / Deep Learning',
-          desc: 'CNN project for CIFAR-10 image classification with feature map visualization and model evaluation.',
-          tech: ['Python', 'TensorFlow', 'Keras'],
-          details: {
-            overview: 'An academic deep learning project focused on image classification and better visibility into model behavior.',
-            highlights: [
-              'Trained a CNN on CIFAR-10 image data.',
-              'Visualized feature maps to inspect learned representations.',
-              'Evaluated model quality and documented the results clearly.',
-            ],
-            metrics: [
-              { label: 'Dataset', value: 'CIFAR-10' },
-              { label: 'Test Accuracy', value: '80.6%' },
-              { label: 'Training', value: '30 Epochs' },
-            ],
-            previewMetrics: [
-              { label: 'Dataset', value: 'CIFAR-10' },
-              { label: 'Training', value: '30 Epochs' },
-            ],
-            imageCount: 0,
-          } satisfies ProjectDetails,
-          buttons: [
-            { label: 'Kaggle', href: 'https://www.kaggle.com/code/mohanadalfawzan/cnn-cifar10' },
-            { label: 'GitHub', href: 'https://github.com/iMD10/cnn-image-classification' },
             { label: 'Details', href: '#' },
           ],
         },
