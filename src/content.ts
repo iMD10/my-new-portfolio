@@ -157,7 +157,7 @@ export const content = {
       intro: 'الأدوات اللي أشتغل فيها، وأستخدمها في بناء المنتجات وتطويرها.',
       groups: [
         { title: 'ذكاء اصطناعي وبيانات', items: ['Python', 'TensorFlow', 'Keras', 'Machine Learning', 'Deep Learning', 'Power BI', 'DAX'] },
-        { title: 'جوال وويب', items: ['Flutter', 'Dart', 'Next.js', 'React', 'Firebase', 'Supabase'] },
+        { title: 'جوال وويب', items: ['Flutter', 'Dart', 'Next.js', 'React', 'Django', 'Firebase', 'Supabase'] },
         { title: 'برمجيات وأدوات', items: ['Java', 'C++', 'Git', 'GitHub', 'SQL', 'REST APIs'] },
       ],
     },
@@ -322,7 +322,7 @@ export const content = {
       intro: 'The tools I use to build and ship products.',
       groups: [
         { title: 'AI & Data', items: ['Python', 'TensorFlow', 'Keras', 'Machine Learning', 'Deep Learning', 'Power BI', 'DAX'] },
-        { title: 'Mobile & Web', items: ['Flutter', 'Dart', 'Next.js', 'React', 'Firebase', 'Supabase'] },
+        { title: 'Mobile & Web', items: ['Flutter', 'Dart', 'Next.js', 'React', 'Django', 'Firebase', 'Supabase'] },
         { title: 'Software & Tools', items: ['Java', 'C++', 'Git', 'GitHub', 'SQL', 'REST APIs'] },
       ],
     },
