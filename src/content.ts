@@ -25,7 +25,7 @@ export const content = {
       subtitle: 'ذكاء اصطناعي · بيانات · برمجيات',
       headline: 'أشتغل على منتجات ذكية، بأسلوب هادئ وعملي.',
       description:
-        'خريج علوم حاسب، الأول على دفعتي. اشتغلت على مشاريع في الذكاء الاصطناعي والبيانات وتطبيقات الجوال ومنصات الويب وذكاء الأعمال.',
+        'خريج علوم حاسب بمرتبة الشرف الأولى. اشتغلت على مشاريع في الذكاء الاصطناعي والبيانات وتطبيقات الجوال ومنصات الويب وذكاء الأعمال.',
       pills: ['معدل 4.96 من 5', 'برنامج كاوست للذكاء الاصطناعي'],
       ctaProjects: 'شاهد المشاريع',
       ctaCV: 'السيرة الذاتية',
@@ -190,7 +190,7 @@ export const content = {
       subtitle: 'AI, Data & Software',
       headline: 'Building intelligent products with a calm, practical mindset.',
       description:
-        'Computer Science graduate ranked 1st in class, with hands-on work across AI, data, mobile apps, web platforms, and business intelligence.',
+        'Computer Science graduate with 1st class honor, with hands-on work across AI, data, mobile apps, web platforms, and business intelligence.',
       pills: ['4.96 / 5 GPA', 'KAUST AI Program'],
       ctaProjects: 'View Projects',
       ctaCV: 'View CV',
